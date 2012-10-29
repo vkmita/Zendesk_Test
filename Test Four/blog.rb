@@ -1,5 +1,6 @@
 class Blog
 
+  # not sure about how to really initialize the best way. Hashes instead of strings?
   def initialize(header, footer, posts)
     @header = header
     @footer = footer
@@ -14,6 +15,7 @@ class Blog
     return output += render_footer
   end
 
+  # a generalized renderer might be helpful
   def render_header
     return content_tag("div",(content_tag("h1",@header)))
   end
