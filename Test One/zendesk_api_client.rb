@@ -43,7 +43,7 @@ class Zendesk_Client
     @user = Hash[:name => name, :email => email]
   end
 
-  def create_ticket(name, email, subject, comment)
+  def create_ticket_as_requester(name, email, subject, comment)
     puts "START CREATE TICKET"
     response = @conn.post do |req|
       req.url '/api/v2/tickets.json'
@@ -84,7 +84,7 @@ user = client.create_user(name, email)
 subject = "Ticket"
 comment = "I don't know what I'm doing"
 
-ticket_id = client.create_ticket(user[:name],user[:email],subject,comment)
+ticket_id = client.create_ticket_as_requester(user[:name],user[:email],subject,comment)
 
 client.mark_ticket_as_solved(ticket_id)
 
